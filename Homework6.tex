@@ -113,18 +113,107 @@
             \end{center}
     \end{proof}
 
+    \pagebreak
+
     \item \textit{True or False? Give a proof or a counter-example.}
     
     \rule{1cm}{0.15mm} If $g$ is integrable on $[0,1]$, then so is $g(x^n)$, for all $n \in \mathbb{N}$.
     \begin{proof}[Solution]
+        True.
+
+        Assume $g$ is integrable on $[0,1]$.
+        Then, $\int_{0}^{1} g(x)dx = U(g) = L(g)$.
+
+        For the case where $n = 1$, we have $g(x^1) = g(x)$, which is integrable.
+
+        Now, assume $g(x^k)$ is integrable for some $k \in \mathbb{N}$.
+        
+        Need to show: $g(x^{k+1})$ is integrable.
+
+        Since $g(x^k)$ is integrable, for every $\epsilon > 0$, there exists a partition $P$ of $[0,1]$ such that $U(g(x^k), P) - L(g(x^k), P) < \epsilon$.
+        
+        Consider the same partition $P$ for $g(x^{k+1})$.
+        
+        Note that $x^{k+1} = x \cdot x^k$.
+        
+        Since $x \in [0,1]$, we have $x^{k+1} \leq x^k$ for all $x \in [0,1]$.
+
+        So, $U(g(x^{k+1}), P) \leq U(g(x^k), P)$ and $L(g(x^{k+1}), P) \leq L(g(x^k), P)$.
+        
+        Therefore, $U(g(x^{k+1}), P) - L(g(x^{k+1}), P) \leq U(g(x^k), P) - L(g(x^k), P) < \epsilon$.
+        
+        By induction, $g(x^n)$ is integrable for all $n \in \mathbb{N}$.
     \end{proof}
+
+    \begin{note}
+        The above problem makes intuitive sense, it really feels like it just \textit{should} be true.
+
+        All we're doing is shifting the $x$'s (shrinking them, since we're in $[0,1]$), and adjusting the functional value accordingly.
+
+        And since $g$ is integrable, we shouldn't have any issue just moving the $x$'s and functional values around, the result should still be integrable.
+
+        And luckily for us, it is.
+    \end{note}
 
     \rule{1cm}{0.15mm} If $|f|$ is integrable on $[a,b]$, then so is $f$.
     \begin{proof}[Solution]
+        False.
+
+        Consider this modified Direchlet function on $[0,1]$:
+        \[f(x) = \begin{cases}
+        1, & x \in \mathbb{Q} \\
+        -1, & x \notin \mathbb{Q}
+        \end{cases}\]
+        
+        So, $|f(x)| = 1$ for all $x \in [0,1]$.
+
+        Thus, $|f|$ is integrable on $[0,1]$.
+
+        But, the Direchlet function is not integrable.
     \end{proof}
 
     \rule{1cm}{0.15mm} If $f$ and $|f|$ are integrable on $[a,b]$, then $|\int_{a}^{b}f| \leq \int_{a}^{b}|f|$.
     \begin{proof}[Solution]
+        True.
+
+        Since $f$ is integrable on $[a,b]$, we have:$\int_{a}^{b}f = L(f) = U(f) \ \ (1) $.
+
+        Since $|f|$ is integrable on $[a,b]$, we have: $\int_{a}^{b}|f| = L(|f|) = U(|f|) \ \ (2)$.
+
+        Notice: $f \leq |f|$ for all $x \in [a,b]$.
+
+        By $(1)$: $|\int_{a}^{b}f| = |U(f)| = | \inf\{U(f,P) : P \text{ is a partition of } [a,b]\} |$.
+
+        By $(2)$: $\int_{a}^{b}|f| = U(|f|) = \inf\{U(|f|,P) : P \text{ is a partition of } [a,b]\}$.
+
+        Each $U(f,P) \leq U(|f|,P) \Rightarrow U(f) \leq U(|f|)$
+        $\Leftrightarrow |U(f)| \leq U(|f|)$
+        Since $|f| \geq 0$, so:
+
+        $|U(f)| \leq U(|f|)$,
+
+        Thus:
+
+        \[| \int_{a}^{b}f | \leq \int_{a}^{b}|f| \]
+    \end{proof}
+    \pagebreak
+    \item For every $n\ \in \ \mathbb{N}$ and for $x \in \mathbb{R}$, define $g_n(x) = \begin{cases} \frac{1}{n}, & \text{for } -n \leq x \leq n \\ 0, & \text{otherwise} \end{cases}$.
+    
+    Evaluate the integral $I_n = \int_{-100}^{100} g_n$.
+    \begin{note}
+
+    Before we tackle this, we kinda need to do a bunch of work.
+
+    We need to figure out what this function looks like, and what it's integrals will look like.
+
+    Let's start figuring out what some of the $g_n$'s look like, both graphically and functionally.
+
+    Then, we can determine their "areas under the curve", which will help us figure out what we need to do to compute this integral.
+    \end{note}
+    
+
+    \begin{proof}[Solution]
+
     \end{proof}
 
 \end{enumerate}
