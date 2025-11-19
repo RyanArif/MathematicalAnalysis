@@ -234,6 +234,40 @@ This wasn't proven in class, so I'm not going to try to prove it here.
 
 It's not difficult to prove, it relies heavily on the definitions.
 
+Another integration theorem, it's very handy. It's not something we'll prove.
+
+\begin{thm}{Lebesgue's Theorem}
+    Suppose $f$ is bounded on $[a,b]$.
+
+    Then, $\int_{a}^{b} f(x) dx$ exists if and only if the set of points where $f$ is discontinuous has measure zero.
+
+\end{thm}
+
+What's measure zero, though? Not very helpful.
+
+We can think about it like, if we remove all of the discontinuities, we still have basically the same set.
+
+If we consider the above example, the function with the whole that goes up at a single point, by plucking out that one point we don't really change anything.
+
+Here's a better definition, though, for measure zero.
+
+\begin{dfn}{Measure Zero}
+    To say that $A \subseteq \mathbb{R}$ has measure zero means that
+
+    For all $\epsilon > 0$, there exists a countable collection of open intervals,
+
+    \[ \{O_i : i \in I\} \]
+
+    Such that,
+
+    \begin{enumerate}
+        \item $A \subseteq \bigcup_{i \in I} O_i$,
+        \item $\sum_{i \in I} \text{length}(O_i) < \epsilon$.
+    \end{enumerate}
+\end{dfn}
+
+So, if we can remove the discontinuities, and those discontinuities have a 1:1 correspondence with the naturals, we're good to integrate.
+
 \section{The Fundamental Theorem of Calculus}
 This is probably my favorite section of any analysis class.
 
