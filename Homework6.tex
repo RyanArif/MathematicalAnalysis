@@ -213,7 +213,131 @@
     
 
     \begin{proof}[Solution]
+        First, let's look at a generic graph of $g_n$.
+
+            \begin{center}
+            \begin{tikzpicture}
+                \begin{axis}[
+                axis lines=middle,
+                xlabel={$x$},
+                ylabel={$y$},
+                xmin=-1.5, xmax=1.5,
+                ymin=-0.2, ymax=1.2,
+                xtick={-1,0,1},
+                xticklabels={$-n$,$0$,$n$},
+                ytick={0,1},
+                yticklabels={$0$,$\frac{1}{n}$},
+                width=10cm,
+                height=6cm
+                ]
+                % Shaded area under the curve
+                \addplot[fill=blue!20, draw=none] coordinates {(-1,0) (-1,1) (1,1) (1,0)} \closedcycle;
+                
+                % The function g_n(x)
+                \addplot[domain=-1:1, samples=2, very thick, blue] {1};
+                \addplot[domain=-1.5:-1, samples=2, very thick, blue] {0};
+                \addplot[domain=1:1.5, samples=2, very thick, blue] {0};
+                
+                % Mark the endpoints
+                \addplot[only marks, mark=*, mark size=2pt, blue] coordinates {(-1,1) (1,1)};
+                \addplot[only marks, mark=o, mark size=2pt, blue] coordinates {(-1,0) (1,0)};
+                \end{axis}
+            \end{tikzpicture}
+            \end{center}
+
+            From this graph, we can see the area under that curve is $= (\frac{1}{n})(n+n) = \frac{1}{n} (2n) = 2$.
+
+            But what happens when we aren't integrating from $-n$ to $n$?
+
+            Let's say, $n = 500$, and we're working with the integral presented, $I_n$.
+
+            Then, our picture looks a little something like:
+
+            \begin{center}
+            \begin{tikzpicture}
+                \begin{axis}[
+                axis lines=middle,
+                xlabel={$x$},
+                ylabel={$y$},
+                xmin=-600, xmax=600,
+                ymin=-0.0005, ymax=0.0025,
+                xtick={-500,-100,0,100,500},
+                xticklabels={$-500$,$-100$,$0$,$100$,$500$},
+                ytick={0,0.002},
+                yticklabels={$0$,$\frac{1}{500}$},
+                width=12cm,
+                height=6cm
+                ]
+                % Shaded area from -100 to 100 (the integral region)
+                \addplot[fill=green!30, draw=none] coordinates {(-100,0) (-100,0.002) (100,0.002) (100,0)} \closedcycle;
+                
+                % The function g_500(x)
+                \addplot[domain=-500:500, samples=2, very thick, blue] {0.002};
+                \addplot[domain=-600:-500, samples=2, very thick, blue] {0};
+                \addplot[domain=500:600, samples=2, very thick, blue] {0};
+                
+                % Mark the endpoints of g_500
+                \addplot[only marks, mark=*, mark size=2pt, blue] coordinates {(-500,0.002) (500,0.002)};
+                \addplot[only marks, mark=o, mark size=2pt, blue] coordinates {(-500,0) (500,0)};
+                
+                % Mark the integration bounds
+                \addplot[dashed, thick, red] coordinates {(-100,0) (-100,0.0025)};
+                \addplot[dashed, thick, red] coordinates {(100,0) (100,0.0025)};
+                \end{axis}
+            \end{tikzpicture}
+            \end{center}
+        
+        Which has an area far less than $2$.
+
+        Okay, so let's look at one last picture, and generalize our integral from that.
+
+        \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+            axis lines=middle,
+            xlabel={$x$},
+            ylabel={$y$},
+            xmin=-1.3, xmax=1.3,
+            ymin=-0.0005, ymax=0.0025,
+            xtick={-1,-0.2,0,0.2,1},
+            xticklabels={$-n$,$-100$,$0$,$100$,$n$},
+            ytick={0,0.002},
+            yticklabels={$0$,$\frac{1}{n}$},
+            width=12cm,
+            height=6cm
+            ]
+            % Shaded area from -100 to 100 (the integral region)
+            \addplot[fill=green!30, draw=none] coordinates {(-0.2,0) (-0.2,0.002) (0.2,0.002) (0.2,0)} \closedcycle;
+            
+            % The function g_n(x)
+            \addplot[domain=-1:1, samples=2, very thick, blue] {0.002};
+            \addplot[domain=-1.3:-1, samples=2, very thick, blue] {0};
+            \addplot[domain=1:1.3, samples=2, very thick, blue] {0};
+            
+            % Mark the endpoints of g_n
+            \addplot[only marks, mark=*, mark size=2pt, blue] coordinates {(-1,0.002) (1,0.002)};
+            \addplot[only marks, mark=o, mark size=2pt, blue] coordinates {(-1,0) (1,0)};
+            
+            % Mark the integration bounds
+            \addplot[dashed, thick, red] coordinates {(-0.2,0) (-0.2,0.0025)};
+            \addplot[dashed, thick, red] coordinates {(0.2,0) (0.2,0.0025)};
+            \end{axis}
+        \end{tikzpicture}
+        \end{center}
+
+    
+        Okay! We've got what we need!
+
+        Using a super simple area of a rectangle thing, we have:
+
+        Area = base $\cdot$ height.
+
+        So, when $n > 100$, the height is $\frac{1}{n}$, and the base is $|100- (-100)| = 200$.
+
+        \[ I_n = \begin{cases}
+            2, & n \leq 100 \\
+            \frac{200}{n}, & n > 100
+        \end{cases} \]
 
     \end{proof}
-
 \end{enumerate}
