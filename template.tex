@@ -1,0 +1,121 @@
+\usepackage{amsmath,amsfonts,amsthm,amssymb,mathtools}
+
+\usepackage[most]{tcolorbox}
+
+\usepackage{blindtext} %Lorem Ipsum
+
+\usepackage{titlesec} %Custom Section Titles
+
+\usepackage{pgfplots}
+\usetikzlibrary{patterns}
+
+\pgfplotsset{compat=1.18}
+\titleformat
+{\chapter} % command
+[display] % shape
+{\bfseries\Large\itshape} % format
+{Part\ \thechapter} % label
+{0.5ex} % sep
+{
+    \rule{\textwidth}{1pt}
+    \vspace{1ex}
+    \centering
+} % before-code
+[
+\vspace{-1.5ex}%
+\rule{\textwidth}{0.3pt}
+] % after-code
+\titlespacing*{\chapter}{0pt}{-50pt}{8pt}
+%Theorem Boxes
+%
+\newtcolorbox{thm}[2][]{
+  enhanced jigsaw, % better frame drawing
+  sharp corners, % No rounded corners
+  boxrule=1pt, % thin frame
+  fonttitle={\large\bfseries},
+  coltitle={white},  % white colour for title
+  colframe = red!30, %red border
+  colback = red!5, %cyan background
+  title=Theorem: {#2} ,  % Fixed title
+  #1
+}
+
+\newtcolorbox{cor}[2][]{
+  enhanced jigsaw, % better frame drawing
+  sharp corners, % No rounded corners
+  borderline west={2pt}{0pt}{pink}, % straight vertical line at the left edge
+  boxrule=0pt, % thin frame
+  fonttitle={\large\bfseries},
+  coltitle={black},  % white colour for title
+  colback = pink!5, %cyan background
+  title=Corollary: {#2} \\,  % Fixed title
+  attach title to upper,
+  #1
+}
+
+\newtcolorbox{lem}[2][]{
+  enhanced jigsaw, % better frame drawing
+  sharp corners, % No rounded corners
+  borderline west={2pt}{0pt}{violet!35}, % straight vertical line at the left edge
+  boxrule=0pt, % thin frame
+  fonttitle={\large\bfseries},
+  coltitle={black},  % white colour for title
+  colframe = green!25, %red border
+  colback = violet!2, %cyan background
+  title=Lemma: {#2} \\,  % Fixed title
+  attach title to upper,
+  #1
+}
+
+\newtcolorbox{dfn}[2][]{%
+  enhanced jigsaw, % better frame drawing
+  sharp corners, % No rounded corners
+  boxrule=1pt,  % thin frame
+  fonttitle={\large\bfseries},
+  coltitle={white},  % white colour for title
+  colframe = blue!30, %blue border
+  colback = blue!5, %cyan background
+  title={Definition: {#2}\ },  % Fixed title
+  #1
+}
+
+\newtcolorbox{ex}[2][]{%
+  enhanced jigsaw, % better frame drawing
+  sharp corners, % No rounded corners
+  boxrule=1pt,  % thin frame
+  fonttitle={\large\bfseries},
+  coltitle={black},  % white colour for title
+  colframe = cyan!20, %cyan border
+  colback = cyan!5, %cyan background
+  title={Example: {#2} \ },  % Fixed title
+  attach title to upper,
+  #1
+}
+
+\newtcolorbox{note}[1][]{%
+  enhanced jigsaw, % better frame drawing
+  borderline west={2pt}{0pt}{red}, % straight vertical line at the left edge
+  sharp corners, % No rounded corners
+  boxrule=0pt, % no real frame,
+  fonttitle={\large\bfseries},
+  coltitle={black},  % Black colour for title
+  title={Note: \ },  % Fixed title
+  attach title to upper, % Move the title into the box
+  #1
+}
+
+\newtcolorbox{question}[2][]{%
+  enhanced jigsaw, % better frame drawing
+  borderline west={2pt}{0pt}{green}, % straight vertical line at the left edge
+  sharp corners, % No rounded corners
+  boxrule=0pt, % no real frame,
+  fonttitle={\large\bfseries},
+  coltitle={black},  % Black colour for title
+  colback={green!5},
+  title={Question {#2}: \ },  % Fixed title
+  attach title to upper, % Move the title into the box
+  #1
+}
+
+%Change QED Symbol%
+\renewcommand\qedsymbol{$\blacksquare$}
