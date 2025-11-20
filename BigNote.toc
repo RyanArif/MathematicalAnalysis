@@ -5,5 +5,5 @@
 \contentsline {section}{\numberline {6.2}Criteria for Integrability}{6}{section.6.2}%
 \contentsline {section}{\numberline {6.3}The Fundamental Theorem of Calculus}{8}{section.6.3}%
 \contentsline {section}{Homework 6}{11}{Item.4}%
-\contentsline {chapter}{\numberline {7}Series, Sequences of Functions, \& Convergence}{17}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Topic 1}{17}{section.7.1}%
+\contentsline {chapter}{\numberline {7}Series, Sequences of Functions, \& Convergence}{22}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Topic 1}{22}{section.7.1}%

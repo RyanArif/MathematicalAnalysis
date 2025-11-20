@@ -340,4 +340,208 @@
         \end{cases} \]
 
     \end{proof}
+    \item Suppose $g$ is continuous and non-negative on $[0,2]$ and that $g(1) > 0$. Does it follow that $\int_{0}^{2}g > 0$? Prove your answer!
+        
+        \begin{proof}[Solution]
+            $g$ continuous $\Rightarrow$ $g$ is integrable. So, $\int_{0}^{2}g = U(g) = L(g)$.
+
+            So, $U(g) = \text{sup}\{U(g,P_i) : P_i \text{ is a partition of }g\}$,
+
+            and $U(g,P) = \sum M_k\Delta x_k$. Since $\Delta x_k$ is in $[0,2]$, $\Delta x_k > 0$.
+
+            $g$ continuous, non-negative, and $g(1) > 0 \Rightarrow$ for some interval around $1$, $g(1) > 0$, and $g$ not $<0$, so sup$\{g(x) : \text{x is around 1}\} \geq g(1) > 0$,
+
+            So $M_k > 0$ on this interval around $1$.
+
+            For all other intervals, $M_k$ may be $0$, or $>0$, but never negative, since $g$ is never negative.
+
+            Therefore, $U(g,P) > 0$ for any partition of $P$.
+
+            Thus, $\int_{0}^{2}g > 0$. 
+        \end{proof}
+    \pagebreak
+
+    \item Is $f(x) = \begin{cases} -4x\sin(\frac{1}{x}) + 2\cos(\frac{1}{x}), & \text{for } x \neq 0,\\
+                                    0, & \text{for } x = 0 \end{cases}$ integrable on $[-p,p]$?
+
+        If so, may we use the Fundamental Theorem of Calculus to evaluate it as
+        \[ \int_{-1}^{1} f = F(1) - F(-1) \text{?} \]
+        If $\int_{-p}^{p}f$ exists, find its value!
+
+        \begin{proof}[Solution]
+            Yes, $f$ is integrable on $[-,p,p] \subseteq \mathbb{R}$, since the set of discontinuities has measure zero.
+
+            $f(x)$ has an antiderivative, $F(x)$, where $F'(x) = f(x) \forall x \in \mathbb{R}$.
+
+            \[ F(x) = \begin{cases} -2x^2\sin(\frac{1}{x}), & x \neq 0, \\
+                                    0, & x = 0 \end{cases} \]
+
+            So, FTC is open for business!
+
+            \[ \int_{-1}^{1}f = F(1) - F(-1) = [-2(1)^2\sin(\frac{1}{1})] - [-2(-1)^2\sin(\frac{1}{-1})] \]
+
+            \[ = -2\sin(1) + 2\sin(-1) = -2\sin(1) - 2\sin(1) = -4\sin(1) \]
+
+            Now, we can solve for $\int_{-p}^{p}f$:
+
+            \[ \int_{-p}^{p}f = F(p) - F(-p) = [-2(p)^2\sin(\frac{1}{p})] - [-2(-p)^2\sin(\frac{1}{-p})] \]
+
+            \[ = -2p^2\sin(\frac{1}{p}) + 2p^2\sin(-\frac{1}{p}) = -2p^2\sin(\frac{1}{p}) - 2p^2\sin(\frac{1}{p}) = -4p^2\sin(\frac{1}{p}) \]
+        \end{proof}
+    
+    \pagebreak
+
+    \item Is the function $g(x) = \begin{cases} 1, & \text{for } x \neq 0\\ -1, & \text{for } x = 0 \end{cases}$ integrable on $[-p,p]$?
+    
+    If so, may we use the Fundamental Theorem of Calculus to evaluate it as
+    \[ \int_{-5}^{5} g = G(5) - G(-5) \text{?} \]
+
+    If $\int_{-5}^{5}g$ exists, find its value!
+
+    \begin{proof}[Solution]
+        \begin{center}
+        \begin{tikzpicture}
+            \begin{axis}[
+                axis lines=middle,
+                xlabel={$x$},
+                ylabel={$y$},
+                xmin=-6, xmax=6,
+                ymin=-1.5, ymax=1.5,
+                xtick={-5,0,5},
+                ytick={-1,1},
+                width=10cm,
+                height=6cm
+            ]
+            % The function g(x) = 1 for x ≠ 0
+            \addplot[domain=-6:-0.1, samples=2, very thick, blue] {1};
+            \addplot[domain=0.1:6, samples=2, very thick, blue] {1};
+            
+            % Open circle at (0,1) to show g(0) ≠ 1
+            \addplot[only marks, mark=o, mark size=2pt, blue] coordinates {(0,1)};
+            
+            % Filled circle at (0,-1) to show g(0) = -1
+            \addplot[only marks, mark=*, mark size=2pt, blue] coordinates {(0,-1)};
+            
+            % Mark integration bounds
+            \addplot[dashed, thick, red] coordinates {(-5,-1.5) (-5,1.5)};
+            \addplot[dashed, thick, red] coordinates {(5,-1.5) (5,1.5)};
+            \end{axis}
+        \end{tikzpicture}
+        \end{center}
+
+    $g$ is integrable, since the set of discontinuities has measure zero.
+
+    So, $g(x)$ is integrable on $[-p,p] \subseteq \mathbb{R}$.
+
+    However, $g$ does not have IVP. So, by Darboux's Theorem, $g$ cannot be a derivative function.
+
+    Thus, FTC is unavailable. :(
+
+    We can still integrate this thing, though.
+
+    \[ \int_{-5}^{5} g = \int_{-5}^{5} 1 \ dx = [x]_{-5}^{5} = 5 - (-5) = 10 \]
+
+    If necessary, we could also write this up with partitions and upper/lower sums.
+
+    So let's do it.
+
+    Let's pick a partition, $P_\epsilon = \{-5, -\frac{\epsilon}{4}, \frac{\epsilon}{4}, 5\}$, for some $\epsilon > 0$.
+
+    Then, we have:
+
+    \[ U(g,P_\epsilon) = \sum M_k \Delta x_k = (1)(-\frac{\epsilon}{4} - (-5)) + (1)(\frac{\epsilon}{4} - (-\frac{\epsilon}{4})) + (1)(5 - \frac{\epsilon}{4})\]
+
+    \[ = -\frac{\epsilon}{4} + 5 + \frac{\epsilon}{2} + 5 - \frac{\epsilon}{4} = 10 \]
+
+    \[ L(g,P_\epsilon) = \sum m_k \Delta x_k = (1)(-\frac{\epsilon}{4} - (-5)) + (-1)(\frac{\epsilon}{4} - (-\frac{\epsilon}{4})) + (1)(5 - \frac{\epsilon}{4}) \]\
+
+    \[ = -\frac{\epsilon}{4} + 5 - \frac{\epsilon}{2} + 5 - \frac{\epsilon}{4} = 10 - \epsilon \]
+
+    As $\epsilon \to 0$, $L(g,P_\epsilon) \to 10 = U(g,P_\epsilon)$.
+
+    Thus, $\int_{-5}^{5} g = 10$.
+    \end{proof}
+    \begin{note}
+    There may be a better way to tackle the last part of this problem. We have this epsilon partition, and we end up with the lower sum being $10 - \epsilon$, but I don't think it's very rigorous to just say "as $\epsilon \to 0$, the lower sum approaches 10".
+
+    Instead, a better way would probably be to involve the definition of $L(g)$. So, the supremum of all lower sums would be $10$, which would be a better way to say it.
+
+    I think.
+    \end{note}
+    \pagebreak
+
+    \item Compute $H(x) = \int_{0}^{x}h$ for $x \in [0,4]$, where $h(t) = \begin{cases} t & 0 \leq t \leq 2 \\ 2 & 2 \leq t \leq 4 \end{cases}$.
+    
+    Sketch the graphs of $h$ and $H$. Is $H$ continuous? Is $H$ differentiable?
+
+    \begin{proof}[Solution]
+    $h$ is continuous on $[0,4]$, so $h$ is integrable on $[0,4]$.
+
+    $H(x) = \int_{0}^{x} h$, where $x \in [0,4]$.
+
+    By FTC part 2, $H$ is continuous, and $h$ continuous $\Rightarrow H(c)$ is differentiable $ \forall c \in [0,4]$.
+
+    Let's compute $H$ now.
+
+    For $0 \leq x \leq 2$:
+    \[ H(x) = \int_{0}^{x} t \ dt = \left[ \frac{t^2}{2} \right]_{0}^{x} = \frac{x^2}{2} \]
+
+    For $2 < x \leq 4$:
+    \[ H(x) = \int_{0}^{2} t \ dt + \int_{2}^{x} 2 \ dt = \left[ \frac{t^2}{2} \right]_{0}^{2} + \left[ 2t \right]_{2}^{x} = 2 + 2(x - 2) = 2x - 2 \]
+\begin{center}
+\begin{tabular}{cc}
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel={$t$},
+        ylabel={$h(t)$},
+        xmin=-0.5, xmax=4.5,
+        ymin=-0.5, ymax=2.5,
+        xtick={0,1,2,3,4},
+        ytick={0,1,2},
+        width=7cm,
+        height=6cm,
+        title={$h(t)$}
+    ]
+    % First piece: h(t) = t for 0 ≤ t ≤ 2
+    \addplot[domain=0:2, samples=2, very thick, blue] {x};
+    
+    % Second piece: h(t) = 2 for 2 ≤ t ≤ 4
+    \addplot[domain=2:4, samples=2, very thick, blue] {2};
+    
+    % Mark the point at t=2
+    \addplot[only marks, mark=*, mark size=2pt, blue] coordinates {(0,0)};
+    \addplot[only marks, mark=*, mark size=2pt, blue] coordinates {(2,2)};
+    \addplot[only marks, mark=*, mark size=2pt, blue] coordinates {(4,2)};
+\end{axis}
+\end{tikzpicture}
+&
+\begin{tikzpicture}
+    \begin{axis}[
+        axis lines=middle,
+        xlabel={$x$},
+        ylabel={$H(x)$},
+        xmin=-0.5, xmax=4.5,
+        ymin=-0.5, ymax=6.5,
+        xtick={0,1,2,3,4},
+        ytick={0,1,2,3,4,5,6},
+        width=7cm,
+        height=6cm,
+        title={$H(x)$}
+    ]
+    % First piece: H(x) = x^2/2 for 0 ≤ x ≤ 2
+    \addplot[domain=0:2, samples=100, very thick, blue] {x^2/2};
+    
+    % Second piece: H(x) = 2x - 2 for 2 < x ≤ 4
+    \addplot[domain=2:4, samples=2, very thick, blue] {2*x - 2};
+    
+    % Mark key points
+    \addplot[only marks, mark=*, mark size=2pt, blue] coordinates {(0,0) (2,2) (4,6)};
+\end{axis}
+\end{tikzpicture}
+\end{tabular}
+\end{center}
+\end{proof}
+
+\pagebreak
 \end{enumerate}
